@@ -26,6 +26,7 @@ test.describe("signup flow", () => {
     });
 
     await signUpModal.signUp(signUpData.username, signUpData.password);
+    await expect(page.locator("#nameofuser")).toHaveText("Welcome test_user");
   });
 
   test("signup flow - user is not able to sign up with the same credentials", async ({
