@@ -9,6 +9,10 @@ export class HomePage extends BasePage {
   readonly carouselActiveImage: Locator;
   readonly nextButton: Locator;
   readonly previousButton: Locator;
+  readonly categories: Locator;
+  readonly phonesCategorie: Locator;
+  readonly laptopsCategories: Locator;
+  readonly monitorCategories: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -20,6 +24,10 @@ export class HomePage extends BasePage {
     this.carouselActiveImage = page.locator(".carousel-item.active img");
     this.nextButton = page.locator(".carousel-control-next");
     this.previousButton = page.locator(".carousel-control-prev");
+    this.categories = page.locator("#cat");
+    this.phonesCategorie = page.getByText("Phones");
+    this.laptopsCategories = page.getByText("Laptops");
+    this.monitorCategories = page.getByText("Monitors");
   }
 
   async open() {
