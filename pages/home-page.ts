@@ -13,6 +13,7 @@ export class HomePage extends BasePage {
   readonly phonesCategorie: Locator;
   readonly laptopsCategories: Locator;
   readonly monitorCategories: Locator;
+  readonly contactModal: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -28,6 +29,7 @@ export class HomePage extends BasePage {
     this.phonesCategorie = page.getByText("Phones");
     this.laptopsCategories = page.getByText("Laptops");
     this.monitorCategories = page.getByText("Monitors");
+    this.contactModal = page.locator("#exampleModal");
   }
 
   async open() {
@@ -41,5 +43,10 @@ export class HomePage extends BasePage {
   async openLogInModal() {
     await this.logInButton.waitFor({ state: "visible" });
     await this.logInButton.click();
+  }
+
+  async openModal() {
+    await this.page.getByRole("link", { name: "Contact" }).click();
+    await this.contactModal.waitFor({ state: "visible" });
   }
 }
